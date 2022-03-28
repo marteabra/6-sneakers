@@ -2,7 +2,7 @@
   <Header />
   <main class="frontpage">
     <section class="frontpage__buttons">
-      <button>
+      <button class="sort-button">
         <svg
           width="10"
           height="7"
@@ -16,7 +16,7 @@
         </svg>
         Sort
       </button>
-      <button>
+      <button class="filter-button">
         Filter
         <svg
           width="10"
@@ -92,7 +92,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 h1 {
   font: var(--font-family);
   color: var(--secondary-color);
@@ -101,12 +101,19 @@ h1 {
 button {
   background: white;
   padding: 10px;
-  font-family: var(--button-font);
   width: 40vw;
+  margin: 0;
+}
+
+.frontpage__buttons {
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .frontpage {
   margin: 25px;
+  display: grid;
+  justify-content: center;
 }
 
 .product__image {
@@ -115,11 +122,13 @@ button {
   border-radius: 20px 20px 0 0;
   text-align: center;
 }
+
 .frontpage__products {
-  margin-top: 20px;
+  width: 100%;
+  margin-top: 10px;
   display: grid;
-  grid-template-columns: 50% 50%;
-  column-gap: 10px;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 20px;
   row-gap: 20px;
 }
 
@@ -129,12 +138,5 @@ button {
   background: white;
   box-shadow: var(--box-shadow);
   border-radius: 20px;
-}
-
-.frontpage__buttons {
-  display: flex;
-  justify-content: space-evenly;
-  margin-right: -20px;
-  margin-left: -20px;
 }
 </style>

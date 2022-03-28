@@ -32,6 +32,7 @@
   border-radius: 20px 20px 0 0;
   display: flex;
   justify-content: space-between;
+  bottom: 0;
 }
 
 .copyright {

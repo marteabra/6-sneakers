@@ -9,4 +9,13 @@ button {
 	border-radius: 20px;
 	box-shadow: var(--box-shadow);
 	font-size: var(--button-size);
+	font-family: var(--button-font);
+}
+h1 {
+	font: var(--font-family);
+	color: var(--secondary-color);
+  }
+
+  main{
+	margin: 25px;
 }
