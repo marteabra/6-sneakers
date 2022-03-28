@@ -1,0 +1,12 @@
+body {
+	background: var(--background);
+	font-size: var(--font-size);
+	font-family: var(--content-font);
+	color: var(--font-color);
+}
+
+button {
+	border-radius: 20px;
+	box-shadow: var(--box-shadow);
+	font-size: var(--button-size);
+}
