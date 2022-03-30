@@ -26,13 +26,13 @@
 
 <style scoped>
 .footer {
-  width: 100vw;
-  background: white;
-  padding: 25px;
-  border-radius: 20px 20px 0 0;
   display: flex;
   justify-content: space-between;
-  bottom: 0;
+  position: absolute;
+  width: 100vw;
+  padding: 25px;
+  border-radius: 20px 20px 0 0;
+  background: white;
 }
 
 .copyright {
