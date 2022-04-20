@@ -7,7 +7,8 @@ export default {
         {
             title: 'Brand Name',
             name: 'brand',
-            type: 'string'
+            type: 'reference',
+            to: [{ type: 'brand' }]
         },
         {
             title: 'Shoe Model',
@@ -28,7 +29,7 @@ export default {
         {
             title: 'Shoe Information',
             name: 'shoeInfo',
-            type: 'string'
+            type: 'text'
         },
         {
             title: 'Shoe Price',

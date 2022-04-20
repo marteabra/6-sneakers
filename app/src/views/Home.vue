@@ -35,38 +35,38 @@
     <section class="frontpage__products">
       <div class="product">
         <div class="product__image">Image container</div>
-        <div class="product__brand">Brand</div>
-        <div class="product__product">Product Name</div>
+        <span class="product__brand">Brand </span>
+        <span class="product__product">- Product Name</span>
         <div class="product__price">Price</div>
       </div>
       <div class="product">
         <div class="product__image">Image container</div>
-        <div class="product__brand">Brand</div>
-        <div class="product__product">Product Name</div>
+        <span class="product__brand">Brand </span>
+        <span class="product__product">- Product Name</span>
         <div class="product__price">Price</div>
       </div>
       <div class="product">
         <div class="product__image">Image container</div>
-        <div class="product__brand">Brand</div>
-        <div class="product__product">Product Name</div>
+        <span class="product__brand">Brand </span>
+        <span class="product__product">- Product Name</span>
         <div class="product__price">Price</div>
       </div>
       <div class="product">
         <div class="product__image">Image container</div>
-        <div class="product__brand">Brand</div>
-        <div class="product__product">Product Name</div>
+        <span class="product__brand">Brand </span>
+        <span class="product__product">- Product Name</span>
         <div class="product__price">Price</div>
       </div>
       <div class="product">
         <div class="product__image">Image container</div>
-        <div class="product__brand">Brand</div>
-        <div class="product__product">Product Name</div>
+        <span class="product__brand">Brand </span>
+        <span class="product__product">- Product Name</span>
         <div class="product__price">Price</div>
       </div>
       <div class="product">
         <div class="product__image">Image container</div>
-        <div class="product__brand">Brand</div>
-        <div class="product__product">Product Name</div>
+        <span class="product__brand">Brand </span>
+        <span class="product__product">- Product Name</span>
         <div class="product__price">Price</div>
       </div>
     </section>
@@ -105,15 +105,15 @@ button {
   margin: 0;
 }
 
-.frontpage__buttons {
-  display: flex;
-  justify-content: space-evenly;
-}
-
 .frontpage {
   margin: 25px;
   display: grid;
   justify-content: center;
+}
+
+.frontpage__buttons {
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .product__image {
