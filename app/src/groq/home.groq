@@ -1,0 +1,10 @@
+// GROQ For homepage
+
+*[_type == 'shoe']
+{
+  _id,
+  "brandName": brand->.brandName,
+  model,
+ "image": image.asset->.url,
+  price
+}

@@ -3,7 +3,6 @@ import createSchema from 'part:@sanity/base/schema-creator'
 
 // Then import schema types from any plugins that might expose them
 import schemaTypes from 'all:part:@sanity/base/schema-type';
-import shoes from './documents/shoes';
 import shoe from './documents/shoe';
 import brand from './documents/brand';
 
@@ -15,6 +14,5 @@ export default createSchema({
   types: schemaTypes.concat([
     shoe,
     brand
-
   ]),
 })

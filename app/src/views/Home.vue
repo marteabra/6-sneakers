@@ -33,41 +33,11 @@
       </button>
     </section>
     <section class="frontpage__products">
-      <div class="product">
-        <div class="product__image">Image container</div>
-        <span class="product__brand">Brand </span>
-        <span class="product__product">- Product Name</span>
-        <div class="product__price">Price</div>
-      </div>
-      <div class="product">
-        <div class="product__image">Image container</div>
-        <span class="product__brand">Brand </span>
-        <span class="product__product">- Product Name</span>
-        <div class="product__price">Price</div>
-      </div>
-      <div class="product">
-        <div class="product__image">Image container</div>
-        <span class="product__brand">Brand </span>
-        <span class="product__product">- Product Name</span>
-        <div class="product__price">Price</div>
-      </div>
-      <div class="product">
-        <div class="product__image">Image container</div>
-        <span class="product__brand">Brand </span>
-        <span class="product__product">- Product Name</span>
-        <div class="product__price">Price</div>
-      </div>
-      <div class="product">
-        <div class="product__image">Image container</div>
-        <span class="product__brand">Brand </span>
-        <span class="product__product">- Product Name</span>
-        <div class="product__price">Price</div>
-      </div>
-      <div class="product">
-        <div class="product__image">Image container</div>
-        <span class="product__brand">Brand </span>
-        <span class="product__product">- Product Name</span>
-        <div class="product__price">Price</div>
+      <div class="product" v-for="shoe in result">
+        <div class="product__image"><img :src="shoe.image" alt=""></div>
+        <span class="product__brand">----{{shoe.brandName}}---</span>
+        <span class="product__product"> - {{shoe.model}}</span>
+        <div class="product__price">{{shoe.price}},-</div>
       </div>
     </section>
   </main>
@@ -77,8 +47,17 @@
 <script>
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
+import sanityMixin from "../mixins/sanityMixin.js";
+import query from "../groq/home.groq?raw";
 
 export default {
+
+  mixins: [sanityMixin],
+
+  async created() {
+    await this.sanityFetch(query); 
+  },
+
   components: {
     Header,
     Footer,
@@ -89,6 +68,12 @@ export default {
       appName: import.meta.env.VITE_APP_NAME,
     };
   },
+
+  async created() {
+    await this.sanityFetch(query);
+    console.log(this.result);
+  },
+
 };
 </script>
 
@@ -105,38 +90,30 @@ button {
   margin: 0;
 }
 
-.frontpage {
-  margin: 25px;
-  display: grid;
-  justify-content: center;
-}
-
 .frontpage__buttons {
   display: flex;
   justify-content: space-evenly;
 }
 
-.product__image {
-  height: 65%;
-  background: grey;
-  border-radius: 20px 20px 0 0;
-  text-align: center;
-}
-
 .frontpage__products {
-  width: 100%;
-  margin-top: 10px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 0 auto;
   column-gap: 20px;
   row-gap: 20px;
 }
 
 .product {
-  height: 25vh;
-  width: 40vw;
+  display: grid;
+  height: 400px; 
   background: white;
   box-shadow: var(--box-shadow);
   border-radius: 20px;
+}
+
+.product__image img{
+  border-radius: 20px 20px 0 0;
+  border: 1px solid black;
+  width: 400px;
 }
 </style>

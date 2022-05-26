@@ -5,8 +5,8 @@ export default {
 
     fields: [
         {
-            title: 'Brand',
-            name: 'brand',
+            title: 'Brand Name',
+            name: 'brandName',
             type: 'string'
         }
     ]
