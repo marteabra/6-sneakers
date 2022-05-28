@@ -2,29 +2,26 @@
 	/*	FP = Front Page	*/
 	/*	CP = Cart Page	*/
 
-:root {
+	:root {
 
-	/*	Colors	*/
-	--background: #f8f5f3;
-	--foreground: white;
-	--secondary-color: #C79447;
-	--font-color: rgba(0, 0, 0, 0.8);
-	
-	/*	Fonts	*/
-	--heading-font: 'Aldrich', sans-serif;
-	--button-font: 'DM sans', sans-serif;
-	--content-font: 'Barlow', sans-serif;
-	--heading-size: 24px;
-	--button-size: 14px;
-	--pp-price-font: 'DM sans', sans-serif, medium;
-	--pp-price-size: 24px;
-	--pp-lead-size: 18px; 
-	--pp-brand-size: 20px;
-	--pp-model-size: 20px; 
+		/*	Colors	*/
+		--background: #f8f5f3;
+		--foreground: white;
+		--secondary-color: #C79447;
+		--font-color: rgba(0, 0, 0, 0.8);
 
+		/*	Fonts	*/
+		--heading-font: 'Aldrich', sans-serif;
+		--button-font: 'DM sans', sans-serif;
+		--content-font: 'Barlow', sans-serif;
+		--heading-size: 24px;
+		--button-size: 14px;
+		--pp-price-font: 'DM sans', sans-serif, medium;
+		--pp-price-size: 24px;
+		--pp-lead-size: 18px;
+		--pp-brand-size: 20px;
+		--pp-model-size: 20px;
 
-	--box-shadow: 2px 4px 8px 0px rgba(0,0,0,0.25);
-	-webkit-box-shadow: 2px 4px 8px 0px rgba(0,0,0,0.25);
-	-moz-box-shadow: 2px 4px 8px 0px rgba(0,0,0,0.25);
-	
-}
+		/*	Box Shadow	*/
+		--box-shadow: 2px 4px 8px 0px rgba(0, 0, 0, 0.25);
+	}

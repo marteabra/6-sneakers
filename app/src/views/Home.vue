@@ -35,9 +35,16 @@
     <section class="frontpage__products">
       <div class="product" v-for="shoe in result">
         <div class="product__image"><img :src="shoe.image" alt=""></div>
-        <span class="product__brand">----{{shoe.brandName}}---</span>
-        <span class="product__product"> - {{shoe.model}}</span>
-        <div class="product__price">{{shoe.price}},-</div>
+        <section class="product__info">
+          <span class="product__brand">{{shoe.brandName}}</span>
+          <span class="product__model"> - {{shoe.model}}</span>
+          <router-link :to="shoe.slug">
+            <button class="product__readmore">
+              More
+            </button>
+        </router-link>
+          <div class="product__price">{{shoe.price}},-</div>
+        </section>
       </div>
     </section>
   </main>
@@ -60,18 +67,17 @@ export default {
 
   components: {
     Header,
-    Footer,
+    Footer
   },
 
   data() {
     return {
-      appName: import.meta.env.VITE_APP_NAME,
+      appName: import.meta.env.VITE_APP_NAME
     };
   },
 
   async created() {
     await this.sanityFetch(query);
-    console.log(this.result);
   },
 
 };
@@ -86,19 +92,21 @@ h1 {
 button {
   background: white;
   padding: 10px;
-  width: 40vw;
+  width: 20vw;
   margin: 0;
+  margin-top: 20px;
+  margin: 0 10 0 10;
 }
 
 .frontpage__buttons {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 
 .frontpage__products {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  margin: 0 auto;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 20;
   column-gap: 20px;
   row-gap: 20px;
 }
@@ -111,9 +119,28 @@ button {
   border-radius: 20px;
 }
 
+.product__image {
+  height: 300px;
+}
+
 .product__image img{
   border-radius: 20px 20px 0 0;
-  border: 1px solid black;
-  width: 400px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product__info {
+  display: grid;
+  padding: 0 10 40 20;
+  position: relative;
+}
+
+.product__price {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 0 10 10 0;
+
 }
 </style>

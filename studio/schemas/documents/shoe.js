@@ -5,6 +5,11 @@ export default {
 
     fields: [
         {
+            title: 'Slug',
+            name: 'slug',
+            type: 'slug'
+        },
+        {
             title: 'Brand Name',
             name: 'brand',
             type: 'reference',

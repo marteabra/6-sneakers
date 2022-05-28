@@ -1,1 +1,12 @@
 // GROQ For productpage
+
+*[slug.current == $slug][0]
+{ _id,
+  "brandName": brand->.brandName,
+  "image": image.asset->.url   ,
+  model,
+  price,
+  shoeInfo,
+  size,
+  "slug": slug.current
+}

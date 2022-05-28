@@ -6,5 +6,6 @@
   "brandName": brand->.brandName,
   model,
  "image": image.asset->.url,
-  price
+  price,
+  "slug": slug.current
 }
