@@ -1,6 +1,5 @@
 body {
 	background: var(--background);
-	font-size: var(--font-size);
 	font-family: var(--content-font);
 	color: var(--font-color);
 }
@@ -8,15 +7,26 @@ body {
 button {
 	border-radius: 20px;
 	box-shadow: var(--box-shadow);
-	font-size: var(--button-size);
+	font-size: var(--button-size-mobile);
 	font-family: var(--button-font);
 }
 
 h1 {
 	font: var(--font-family);
 	color: var(--secondary-color);
+	font-size: var(--heading-size-mobile);
 }
 
 main {
 	margin: 20px;
+}
+
+@media screen and (min-width: 1024px) {
+	button {
+		font-size: var(--button-size-desktop);
+	}
+
+	h1 {
+		font-size: var(--heading-size-desktop);
+	}
 }

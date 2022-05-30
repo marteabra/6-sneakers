@@ -5,6 +5,7 @@
   </main>
   <main v-else class="product-page">
     <button class="go-back" aria-label="Go back">
+      <a href="/">
       <svg
         width="20"
         height="16"
@@ -19,6 +20,7 @@
         />
       </svg>
       Back
+      </a>
     </button>
     <main class="product">
       <section class="product__container">
@@ -73,7 +75,9 @@
           <div class="add-cart__mobile-text">+ ADD TO CART</div>
         </section>
   </main>
-
+  <footer>
+    <Footer />
+  </footer>
 </template>
 
 <script>
@@ -115,9 +119,9 @@ export default {
 };
 </script>
 <style scoped>
-main {
-  padding-bottom: 100px;
-  margin: 10;
+a{
+  text-decoration: none;
+  color: black;
 }
 
 button {
@@ -125,10 +129,19 @@ button {
   width: 100px;
   height: 40px;
 }
+.product-page {
+  padding-bottom: 100px;
+  margin: 10;
+}
 
 .back-arrow {
   height: 10px;
   margin: 0 10 0 -10;
+}
+
+.product__image {
+  width: 95vw;
+  margin-left: -20;
 }
 
 .product__image img{
@@ -188,18 +201,18 @@ button {
 
 .product__info-brand {
   font-family: var(--content-font);
-  font-size: var(--pp-brand-size);
+  font-size: var(--pp-brand-size-mobile);
   font-weight: 700;
 }
 
 .product__info-model {
-  font-size: var(--pp-model-size);
+  font-size: var(--pp-model-size-mobile);
   font-weight: 200;
 }
 
 .product__info-price {
   font-family: var(--pp-price-font);
-  font-size: var(--pp-price-size);
+  font-size: var(--pp-price-size-mobile);
 }
 
 .product__lead {
@@ -212,34 +225,77 @@ button {
   margin: 20px;
 } 
 
+footer {
+  display: none;
+}
+
 @media screen and (min-width: 1024px){
+
+  .product-page {
+    margin: 20px;
+  }
   .add-cart__mobile{
     display: none;
   }
 
   .add-cart__desktop{
     display: block;
+    position: absolute;
+    bottom: -20;
   }
 
+  .add-cart__desktop button {
+    background: var(--secondary-color);
+    font-size: var(--pp-model-size-desktop);
+    color: white;
+    border-radius: 20px;
+    height: 60px;
+    width: 40vw;
+    margin-left: -8px;
+    }
+
+  /* .product {
+    margin: 10px 30px 10px 30px;
+  } */
   .product__container{
     display: flex;
-  }
-
-  .product__image img{
     width: 100%;
   }
 
+  .product__image{
+    width: 50%;
+    margin-right: 50px;
+  } 
+
   .product__info {
     display: grid;
-    background: green;
+    width: 100%;
+    margin-top: 0;
   }
 
+  .product__info-brand{
+    font-size: var(--pp-brand-size-desktop);
+  }
+
+  .product__info-model {
+    font-size: var(--pp-model-size-desktop);
+  }
+
+  .product__info-price {
+    font-size: var(--pp-price-size-desktop);
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
   .product__size-mobile{
     display: none;
   }
+
   .product__size-desktop{
     display: block;
+    margin-top: 40px;
+    margin-left: -15;
   }
+
   .product__size-desktop button {
     border-radius: 100%;
     height: 40px;
@@ -251,6 +307,11 @@ button {
     text-align: justify;
     width: 50%;
     margin-top: 40px;
+    font-size: var(--pp-lead-size-desktop);
+  }
+
+  footer {
+    display: block;
   }
 
 }

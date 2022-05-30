@@ -1,6 +1,8 @@
 <template>
   <header>
-    <h1>'6'SNEAKERS</h1>
+    <a href="/">
+      <h1>'6'SNEAKERS</h1>
+    </a>
     <button class="cart__icon">
       <svg
         width="25"
@@ -25,25 +27,38 @@ export default {
 </script>
 
 <style scoped>
+header {
+  margin-top: 1em;
+  width: 100%;
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+}
+
 h1 {
-  font-size: var(--heading-size);
+  font-size: var(--heading-size-mobile);
   text-align: center;
   font-family: var(--heading-font);
 }
 
-header {
-  margin: 2em;
-}
 
 .cart__icon {
   position: absolute;
   right: 0;
-  top: 0;
-  margin: 25px;
+  top: -10;
+  margin-right: 10px;
   border-radius: 100%;
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
   background: white;
   box-shadow: var(--box-shadow);
+}
+
+@media screen and (min-width: 1024px) {
+  h1 {
+    font-size: var(--heading-size-desktop);
+  }
 }
 </style>

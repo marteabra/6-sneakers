@@ -12,7 +12,6 @@ export default {
         async sanityFetch(query, params) {
             this.result = await sanity.fetch(query, params);
             this.loading = false;
-            console.log(this.result)
         }
     }
 }

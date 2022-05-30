@@ -14,13 +14,27 @@
 		--heading-font: 'Aldrich', sans-serif;
 		--button-font: 'DM sans', sans-serif;
 		--content-font: 'Barlow', sans-serif;
-		--heading-size: 24px;
-		--button-size: 14px;
 		--pp-price-font: 'DM sans', sans-serif, medium;
-		--pp-price-size: 24px;
-		--pp-lead-size: 18px;
-		--pp-brand-size: 20px;
-		--pp-model-size: 20px;
+
+
+		/*	Font size mobile	*/
+		--heading-size-mobile: 24px;
+		--button-size-mobile: 14px;
+		--fp-size-model: 14px;
+		--pp-price-size-mobile: 24px;
+		--pp-lead-size-mobile: 16px;
+		--pp-brand-size-mobile: 20px;
+		--pp-model-size-mobile: 20px;
+
+
+		/*	Font size desktop	*/
+		--heading-size-desktop: 48px;
+		--button-size-desktop: 18px;
+		--pp-price-size-desktop: 40px;
+		--pp-lead-size-desktop: 18px;
+		--pp-brand-size-desktop: 30px;
+		--pp-model-size-desktop: 24px;
+
 
 		/*	Box Shadow	*/
 		--box-shadow: 2px 4px 8px 0px rgba(0, 0, 0, 0.25);
