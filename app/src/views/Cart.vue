@@ -1,43 +1,35 @@
 <template>
   <Header />
-  <section class="cart">
+  <main class="cart">
     <h2>Your shopping cart</h2>
 
-    <section class="cart-item">
-      <div class="cart-item__image">
-        <img src="/" alt="" />
-      </div>
-      <div class="cart-item__info">
-        <div>Brand</div>
-        <div>Model</div>
-        <div>Size</div>
-        <div>Price</div>
-      </div>
-      <div class="cart-item__remove">
-        <button>X</button>
-      </div>
+    <section>
+      <div>Your shopping cart is empty</div>
     </section>
 
-    <section class="cart-item">
-      <div class="cart-item__image">
-        <img src="/" alt="" />
-      </div>
-      <div class="cart-item__info">
-        <div>Brand</div>
-        <div>Model</div>
-        <div>Size</div>
-        <div>Price</div>
-      </div>
-      <div class="cart-item__remove">
-        <button>X</button>
-      </div>
+    <section>
+      <section class="cart-item" v-for="shoe in getCart">
+        <div class="cart-item__image">
+          <img :src="shoe.image" alt="" />
+        </div>
+        <div class="cart-item__info">
+          <div>{{result.brand}}</div>
+          <div>Model</div>
+          <div>Size</div>
+          <div>Price</div>
+        </div>
+        <div class="cart-item__remove">
+          <button>X</button>
+        </div>
+      </section>
     </section>
 
     <section class="total">
       <div class="total__subtotal">SUBTOTAL:</div>
       <div class="total__price">Total Price</div>
     </section>
-  </section>
+    
+  </main>
 
   <section class="checkout">
     Check out
@@ -60,6 +52,12 @@
 import Header from "../components/Header.vue";
 
 export default {
+  computed: {
+    getCart() {
+      return this.$store.getters.getCart;
+    }
+  },
+
   components: {
     Header,
   },
@@ -73,8 +71,8 @@ h2 {
 
 .cart {
   min-height: 75vh;
-  display: inline-block;
-  margin: 10;
+  max-width: 80vw;
+  margin: auto;
 }
 
 .cart-item {
@@ -82,7 +80,7 @@ h2 {
   justify-content: flex-start;
   background: white;
   height: 15vh;
-  width: 95vw;
+  width: 80vw;
   border-radius: 20px;
   margin-top: 20;
 }
@@ -102,7 +100,7 @@ h2 {
 .cart-item__remove {
   position: absolute;
   right: 0;
-  margin: 10 20 0 0;
+  margin: 10 100 0 0;
 }
 .cart-item__remove button {
   height: 40px;

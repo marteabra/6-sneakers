@@ -171,6 +171,9 @@ button {
 
 /*  Small desktop */
 @media screen and (min-width: 1024px) {
+  .frontpage {
+    max-width: 90vw;
+  }
   .frontpage__products {
     grid-template-columns: repeat(3, 1fr);
   }

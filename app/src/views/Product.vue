@@ -45,7 +45,7 @@
             </div>
           </div>
           <section class="add-cart__desktop">
-            <button>+ Add to cart</button>
+            <button @click="addToCart(product)">+ Add to cart</button>
           </section>
         </section>
       </section>
@@ -58,7 +58,7 @@
     </main>
 
     <section class="add-cart__mobile">
-          <button class="add-cart__mobile-button">
+          <button class="add-cart__mobile-button" @click="addToCart(result)">
             <svg
               width="25"
               height="22"
@@ -88,14 +88,31 @@ import query from "../groq/productPage.groq?raw";
 
 export default {
 
+ /*  data() {
+    return {
+      shoe: {
+
+      }
+    }
+  }, */
+
   mixins: [sanityMixin],
 
   async created() {
     await this.sanityFetch(query, params); 
-    console.log(size)
   },
 
+  computed: {
+    products() {
+      return this.$store.getters.getproduct;
+    }
+  },
 
+  methods: {
+    addToCart(products) {
+      this.$store.dispatch("updateProducts", products)
+    }
+  },
 
   components: {
     Header,
@@ -246,6 +263,10 @@ footer {
     display: none;
   }
 
+  .product{
+
+  }
+
   .product__container{
     display: flex;
     width: 100%;
@@ -253,7 +274,6 @@ footer {
 
   .product__container-desktop {
     width: 50%;
-    background: green;
   }
 
   .product__image{
@@ -294,7 +314,6 @@ footer {
    .add-cart__desktop{
     display: block;
     position: absolute;
-
   }
 
   .add-cart__desktop button {
@@ -365,11 +384,6 @@ footer {
   .product-page {
     max-width: 1400px;
     margin: 0 auto;
-  }
-
-  .product__lead{
-    /* padding: 0 30px 0 30px; */
-   
   }
 
   .add-cart__desktop {
