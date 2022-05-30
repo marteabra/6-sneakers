@@ -28,7 +28,7 @@
           <img :src="result.image" alt="">
         </div>
 
-        <section class="product__desktop-container">
+        <section class="product__container-desktop">
           <div class="product__size-mobile">
             <button v-for="size in result.size">{{size}}</button>
           </div>
@@ -139,9 +139,13 @@ button {
   margin: 0 10 0 -10;
 }
 
+.product {
+  width: 100%;
+  margin: 0 auto;
+}
+
 .product__image {
-  width: 95vw;
-  margin-left: -20;
+  width: 100%;
 }
 
 .product__image img{
@@ -177,7 +181,6 @@ button {
   position: absolute;
   background: white;
   width: 100vw;
-  height: 120px;
   left: 0;
   align-items: center;
 }
@@ -194,9 +197,10 @@ button {
 
 .product__info {
   display: flex;
-  margin: 30 0 20 0;
-  width: 100%;
   justify-content: space-between;
+  width: 100%;
+  margin: 30 0 20 0;
+  padding: 10px;
 }
 
 .product__info-brand {
@@ -216,8 +220,10 @@ button {
 }
 
 .product__lead {
-  text-align: justify;
   width: 100%;
+  text-align: justify;
+  margin-bottom: 60px;
+  padding: 10px;
 }
 
 .add-cart__mobile-text {
@@ -229,48 +235,95 @@ footer {
   display: none;
 }
 
+/* Small desktop */
 @media screen and (min-width: 1024px){
 
   .product-page {
-    margin: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
   }
   .add-cart__mobile{
     display: none;
   }
 
-  .add-cart__desktop{
-    display: block;
-    position: absolute;
-    bottom: -20;
-  }
-
-  .add-cart__desktop button {
-    background: var(--secondary-color);
-    font-size: var(--pp-model-size-desktop);
-    color: white;
-    border-radius: 20px;
-    height: 60px;
-    width: 40vw;
-    margin-left: -8px;
-    }
-
-  /* .product {
-    margin: 10px 30px 10px 30px;
-  } */
   .product__container{
     display: flex;
     width: 100%;
   }
 
+  .product__container-desktop {
+    width: 50%;
+    background: green;
+  }
+
   .product__image{
     width: 50%;
+    height: 100%;
     margin-right: 50px;
   } 
 
   .product__info {
     display: grid;
     width: 100%;
-    margin-top: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  .product__info-price {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+
+  .product__size-mobile{
+    display: none;
+  }
+
+  .product__size-desktop{
+    display: block;
+    margin-top: 0px;
+    margin-left: -10;
+  }
+
+  .product__size-desktop button {
+    border-radius: 100%;
+    height: 40px;
+    width: 40px;
+    margin: 10px;
+  }
+
+   .add-cart__desktop{
+    display: block;
+    position: absolute;
+
+  }
+
+  .add-cart__desktop button {
+    background: var(--secondary-color);
+    color: white;
+    border-radius: 20px;
+    height: 40px;
+    width: 40vw;
+    margin-left: -8px;
+  }
+
+  .product__lead {
+    white-space: pre-wrap;
+    width: 40ch;
+    margin-top: 40px;
+    font-size: var(--pp-lead-size-desktop);
+  }
+
+  footer {
+    display: block;
+  }
+
+}
+
+/* Large desktop */
+@media screen and (min-width: 1300px) {
+  .product-page {
+    max-width: 1100px;
+    margin: 0 auto;
   }
 
   .product__info-brand{
@@ -283,36 +336,49 @@ footer {
 
   .product__info-price {
     font-size: var(--pp-price-size-desktop);
-    margin-top: 40px;
-    margin-bottom: 40px;
-  }
-  .product__size-mobile{
-    display: none;
-  }
-
-  .product__size-desktop{
-    display: block;
-    margin-top: 40px;
-    margin-left: -15;
-  }
-
-  .product__size-desktop button {
-    border-radius: 100%;
-    height: 40px;
-    width: 40px;
-    margin: 10px;
   }
 
   .product__lead {
-    text-align: justify;
-    width: 50%;
-    margin-top: 40px;
-    font-size: var(--pp-lead-size-desktop);
+    width: 48ch;
   }
 
-  footer {
-    display: block;
+  .add-cart__desktop {
+    position: relative;
+    margin-top: 75px;
+    bottom: 0;
   }
 
+  .add-cart__desktop {
+    margin-top: 94px;
+  }
+
+  .add-cart__desktop button {
+    height: 50px;
+    width: 100%;
+    margin: 0;
+  }
+  
+}
+
+/* 4K screens */
+@media screen and (min-width: 2000px) {
+  .product-page {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .product__lead{
+    /* padding: 0 30px 0 30px; */
+   
+  }
+
+  .add-cart__desktop {
+    height: 100px;
+    width: 70%;
+  }
+
+  .add-cart__desktop button {
+    width: 100%;
+  }
 }
 </style>

@@ -20,7 +20,7 @@
 		/*	Font size mobile	*/
 		--heading-size-mobile: 24px;
 		--button-size-mobile: 14px;
-		--fp-size-model: 14px;
+		--fp-model-size-mobile: 14px;
 		--pp-price-size-mobile: 24px;
 		--pp-lead-size-mobile: 16px;
 		--pp-brand-size-mobile: 20px;
@@ -30,6 +30,9 @@
 		/*	Font size desktop	*/
 		--heading-size-desktop: 48px;
 		--button-size-desktop: 18px;
+		--fp-brand-size-desktop: 20px;
+		--fp-model-size-desktop: 18px;
+		--fp-price-size-desktop: 22px;
 		--pp-price-size-desktop: 40px;
 		--pp-lead-size-desktop: 18px;
 		--pp-brand-size-desktop: 30px;
