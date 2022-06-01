@@ -1,6 +1,6 @@
 <template>
   <Header />
-  <main v-if="loading"></main>
+  <main v-if="loading">loading</main>
   
   <main class="frontpage" v-else>
     <section class="frontpage__buttons">

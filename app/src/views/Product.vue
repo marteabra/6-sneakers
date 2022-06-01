@@ -41,7 +41,7 @@
             <section class="product__info-price">
               <div>{{result.price}},-</div>
             </section>
-            <select class="product__size-desktop" v-model="selectedShoe.size">
+            <select class="product__size-desktop" >       <!--add v-model="selectedShoe.size" if using select size function. Attempt on select shoe size, didn´t have time to figure it out by due date  -->
               <option value="select size" disabled>Chose your size</option>
               <option v-for="size in result.size">{{size}}</option>
             </select>
@@ -111,12 +111,12 @@ export default {
   data() {
     return{
       appName: import.meta.env.VITE_APP_NAME,
-      selectedShoe: {                           //Attempt on fetching selected size
-        brandName: this.result.brandName,
+      /* selectedShoe: {                           //Attempt on fetching selected size. Will continue to try to make this work.
+        brandName: this.products.brandName,
         model: this.products.model,
         price: this.products.price,
         size: this.products.size[0]
-      }
+      } */
     };
   },
 
