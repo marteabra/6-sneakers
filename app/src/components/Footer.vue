@@ -8,14 +8,14 @@
     <section class="footer__socials">
       <div>
         <img
-          src="public/images/facebook-2.png"
+          src="/public/images/facebook-2.png"
           alt="logo-facebook"
           class="facebook"
         />
       </div>
       <div>
         <img
-          src="public/images/instagram-3.png"
+          src="/public/images/instagram-3.png"
           alt="logo-instagram"
           class="instagram"
         />
