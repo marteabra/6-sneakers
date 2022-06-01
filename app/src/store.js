@@ -3,6 +3,7 @@ import sanityMixin from '../src/mixins/sanityMixin';
 export default {
 
 	mixins: [sanityMixin],
+
 	async created() {
 		await this.sanityFetch(query)
 	},
@@ -10,13 +11,17 @@ export default {
 	state() {
 		return {
 			cart: [],
-			shoe: []
+			shoe: [],
+			size: [],
+			total: 0,
 		};
 	},
 
 	methods: {
-		getShoe() {
-			this.shoe += this.content
+		getTotalPrice() {
+			return this.cart.reduce(function (total, shoe) {
+				return total + shoe.price;
+			}, 0)
 		}
 	},
 
@@ -33,11 +38,18 @@ export default {
 	mutations: {
 		addToCart(state, shoe) {
 			state.cart.push(shoe);
-			console.log(this.state.cart)
 		},
 
-		remove(state) {
-			state.cart = []
+		removeItem(state, index) {
+			state.cart.splice(index, 1);
+		},
+
+		// select size, needs to be fixed!
+		selectSize(state, size) {
+			state.size.push(size);
+		},
+		updateSize(state, { index, value }) {
+			state.size[index] = value;
 		}
 	},
 
@@ -46,8 +58,8 @@ export default {
 			commit('addToCart', result)
 		},
 
-		removeProduct({ commit }, result) {
-			commit('remove', result)
+		removeItem({ commit }, index) {
+			commit('removeItem', index)
 		}
-	}
-};
+	},
+}

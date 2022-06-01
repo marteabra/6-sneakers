@@ -1,33 +1,55 @@
 <template>
   <Header />
   <main class="cart">
-    <h2>Your shopping cart</h2>
+    
+    <router-link :to="`/`">
+      <button class="back-home" aria-label="Back to home page">
+        <svg
+          width="20"
+          height="16"
+          viewBox="0 0 20 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          class="back-arrow"
+        >
+          <path
+            d="M0.292878 7.29289C-0.0976463 7.68342 -0.0976464 8.31658 0.292878 8.70711L6.65684 15.0711C7.04736 15.4616 7.68053 15.4616 8.07105 15.0711C8.46158 14.6805 8.46158 14.0474 8.07105 13.6569L2.4142 8L8.07105 2.34314C8.46158 1.95262 8.46158 1.31946 8.07105 0.928931C7.68053 0.538407 7.04736 0.538407 6.65684 0.928931L0.292878 7.29289ZM19.0277 7L0.999985 7L0.999985 9L19.0277 9L19.0277 7Z"
+            fill="black"
+          />
+        </svg>
+        Home
+      </button>
+    </router-link>
 
+    <h2>Your shopping cart</h2>
+    
     <section>
-      <section class="cart-item" v-for="shoe in getCart" :key="shoe.id">
+      <section class="cart-item" v-for="shoe in getCart">
         <div class="cart-item__image">
-          <img :src="shoe.image" alt="" />
+          <img :src="shoe.image" alt="product image" />
         </div>
         <div class="cart-item__info">
-          <div>{{shoe.brand}}</div>
-          <div>{{shoe.model}}</div>
-          <div>{{shoe.size}}</div>
-          <div>{{shoe.price}}</div>
+          <div class="cart-item__name">
+            <span class="cart-item__brand">{{shoe.brandName}}</span>
+            <span class="cart-item__model">{{shoe.model}}</span>
+          </div>
+          <span class="cart-item__size">STR:{{shoe.size}}</span>
+          <span class="cart-item__price">{{shoe.price}},-</span>
         </div>
         <div class="cart-item__remove">
-          <button @click="remove()">X</button>
+          <button @click="removeItem(index)">X</button>
         </div>
       </section>
     </section>
 
     <section class="total">
       <div class="total__subtotal">SUBTOTAL:</div>
-      <div class="total__price">Total Price</div>
+      <div class="total__price">{{getTotalPrice}} ,-</div>
     </section>
     
   </main>
 
-  <section class="checkout">
+  <button class="checkout">
     Check out
     <svg
       width="20"
@@ -42,27 +64,42 @@
         fill="black"
       />
     </svg>
-  </section>
+  </button>
 </template>
 <script>
 import Header from "../components/Header.vue";
 
 export default {
+
   data() {
     return {
-      visible: false,
-      sum: 0,
-      cart: []
+      visible: false
     }
   },
 
   computed: {
+    getTotalPrice() {
+      return this.$store.getters.getTotalPrice;
+    },
+
     getShoe() {
-			return this.$store.getters.getShoe;
+      return this.$store.getters.getShoe;
 		},
 
     getCart() {
       return this.$store.getters.getCart;
+    },
+
+    getTotalPrice() {                                  //fetching price from all items in cart, adding them together in computed to make the function run all the time.
+			return this.getCart.reduce(function (total, shoe) {
+				return total + shoe.price;
+			}, 0);
+  },
+  },
+
+  methods: {
+    removeItem(index) {
+      this.$store.dispatch('removeItem', index)
     }
   },
 
@@ -77,50 +114,93 @@ h2 {
   color: var(--secondary-color);
 }
 
+button {
+  margin: 10;
+  width: 100px;
+  height: 40px;
+}
+
+.back-arrow {
+  height: 10px;
+  margin: 0 10 0 -10;
+}
+
 .cart {
   min-height: 75vh;
-  max-width: 80vw;
+ 
+  display: grid;
   margin: auto;
+
 }
 
 .cart-item {
   display: flex;
   justify-content: flex-start;
-  background: white;
-  height: 15vh;
-  width: 80vw;
+  position: relative;
+  margin: 10;
+  height: 20vh;
   border-radius: 20px;
-  margin-top: 20;
+  background: white;
 }
 
 .cart-item__image {
-  height: 100px;
-  width: 150px;
-  background: grey;
+  align-self: center;
+  margin-left: 5px;
+}
+
+.cart-item__image img {
+  height: 90%;
+  width: auto;
   border-radius: 20px;
-  margin: 10px;
 }
 
 .cart-item__info {
-  margin: 10px;
+  position: relative;
+  display: grid;
+  width: 100%;
+  margin: 5px;
+  font-size: var(--cp-info-size-mobile);
+}
+
+.cart-item__name {
+  display: grid;
+  height: 50%;
+}
+
+.cart-item__model {
+  font-style: italic;
+}
+
+.cart-item__size {
+  align-self: center;
+  margin-bottom: 30px;
+ 
+}
+
+.cart-item__price {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-size: var(--cp-price-size-mobile);
 }
 
 .cart-item__remove {
   position: absolute;
   right: 0;
-  margin: 10 100 0 0;
 }
 .cart-item__remove button {
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: 30px;
   box-shadow: var(--box-shadow);
   background: white;
+  margin-top: 0;
+  margin: 5px;
 }
 
 .total {
-  display: grid;
+  text-align: right;
   float: right;
-  margin: 30 10 10 10;
+  margin: 40 20 70 20;
 }
 
 .total__subtotal {
@@ -131,15 +211,19 @@ h2 {
   font-size: 36px;
 }
 
-.checkout {
-  background: white;
-  height: 120px;
+.checkout{
   text-align: center;
-  padding: 40px;
+  background: white;
+  border-radius: 20px 20px 0 0;
   font-size: var(--pp-price-size);
+  width: 100%;
+  height: 100px;
+  margin: 0;
+  padding: 20px;
 }
 
 .checkout__arrow {
   float: right;
 }
+
 </style>

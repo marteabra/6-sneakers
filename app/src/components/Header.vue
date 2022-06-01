@@ -31,9 +31,14 @@ export default {
 
 <style scoped>
 header {
-  margin-top: 1em;
+  position: sticky;
+  top: 0;
+  height: 50px;
   width: 100%;
-  position: relative;
+  padding-top: 15px;
+  margin-bottom: 20px;
+  background: var(--background);
+  z-index: 1;
 }
 
 a {
@@ -50,7 +55,7 @@ h1 {
 .cart__icon {
   position: absolute;
   right: 0;
-  top: -10;
+  top: 5;
   margin-right: 10px;
   border-radius: 100%;
   height: 40px;

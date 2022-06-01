@@ -4,8 +4,8 @@
   loading
   </main>
   <main v-else class="product-page">
-    <button class="go-back" aria-label="Go back">
-      <a href="/">
+    <router-link :to="`/`">
+      <button class="go-back" aria-label="Go back">
       <svg
         width="20"
         height="16"
@@ -20,8 +20,8 @@
         />
       </svg>
       Back
-      </a>
-    </button>
+      </button>
+    </router-link>
     <main class="product">
       <section class="product__container">
         <div class="product__image">
