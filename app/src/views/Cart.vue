@@ -34,7 +34,7 @@
             <span class="cart-item__model">{{shoe.model}}</span>
           </div>
           <span class="cart-item__size">STR:{{shoe.size}}</span>
-          <span class="cart-item__price">{{shoe.price}},-</span>
+          <span class="cart-item__price">{{shoe.price}},-</span>    <!-- not functioning as it should.. -->
         </div>
         <div class="cart-item__remove">
           <button @click="removeItem(index)">X</button>
@@ -174,7 +174,6 @@ button {
 .cart-item__size {
   align-self: center;
   margin-bottom: 30px;
- 
 }
 
 .cart-item__price {
@@ -224,6 +223,39 @@ button {
 
 .checkout__arrow {
   float: right;
+}
+
+@media screen and (min-width: 1000px) {
+  .cart {
+    max-width: 90vw;
+  }
+
+  .cart-item {
+    max-width: 50vw;
+    margin: 0 auto;
+    margin-top: 20px;
+    font-size: var(--cp-info-size-desktop);
+  }
+
+  .cart-item__info {
+    font-size: var(--cp-info-size-desktop);
+
+  }
+
+ .cart-item__size {
+   font-size: 0.8rem;
+   position: absolute;
+   top: 0;
+   right: 30%;
+ }
+
+ .cart-item__price{
+   font-size: var(--cp-price-size-desktop);
+ }
+
+ .total {
+   margin: 50 260 50 0;
+ }
 }
 
 </style>
