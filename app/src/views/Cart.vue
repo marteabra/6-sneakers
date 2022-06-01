@@ -26,7 +26,7 @@
     <section>
       <section class="cart-item" v-for="shoe in getCart">
         <div class="cart-item__image">
-          <img :src="shoe.image" alt="product image" />
+          <img :src="shoe.image" />
         </div>
         <div class="cart-item__info">
           <div class="cart-item__name">

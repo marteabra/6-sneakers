@@ -29,9 +29,10 @@
         </div>
 
         <section class="product__container-desktop">
-          <div class="product__size-mobile">
-            <button v-for="size in result.size">{{size}}</button>
-          </div>
+          <select class="product__size-mobile">
+              <option value="select size" disabled>Chose your size</option>
+              <option v-for="size in result.size">{{size}}</option>
+            </select>
           <div class="product__info">
             <section class="product__info-name">
               <div class="product__info-brand">{{result.brandName}}</div>
@@ -40,12 +41,13 @@
             <section class="product__info-price">
               <div>{{result.price}},-</div>
             </section>
-            <div class="product__size-desktop">
-              <button v-for="size in result.size">{{size}}</button>
-            </div>
+            <select class="product__size-desktop" v-model="selectedShoe.size">
+              <option value="select size" disabled>Chose your size</option>
+              <option v-for="size in result.size">{{size}}</option>
+            </select>
           </div>
           <section class="add-cart__desktop">
-            <button @click="addToCart(product)">+ Add to cart</button>
+            <button @click="addToCart(result)">+ Add to cart</button>
           </section>
         </section>
       </section>
@@ -91,7 +93,7 @@ export default {
   mixins: [sanityMixin],    //  getting sanity mixin to fetch query and params through methods
 
   async created() {
-    await this.sanityFetch(query, params); 
+    await this.sanityFetch(query, params);
   },
 
   computed: {
@@ -106,16 +108,21 @@ export default {
     }
   },
 
-  components: {
-    Header,
-    Footer
-  },
-
   data() {
     return{
       appName: import.meta.env.VITE_APP_NAME,
-    
+      selectedShoe: {                           //Attempt on fetching selected size
+        brandName: this.result.brandName,
+        model: this.products.model,
+        price: this.products.price,
+        size: this.products.size[0]
+      }
     };
+  },
+
+  components: {
+    Header,
+    Footer
   },
 
   async created() {
@@ -166,6 +173,18 @@ button {
 .product__size-mobile{
   display: flex;
   justify-content: center;
+  border: none;
+  width: 40%;
+  height: 20%;
+  margin: 20 0 20 10;
+  font-family: var(--pp-price-font);
+  font-size: 1rem;
+  user-select: none;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+}
+
+.product__size-mobile select {
+  display: none;
 }
 
 .product__size-mobile button {
