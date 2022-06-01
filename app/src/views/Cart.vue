@@ -4,22 +4,18 @@
     <h2>Your shopping cart</h2>
 
     <section>
-      <div>Your shopping cart is empty</div>
-    </section>
-
-    <section>
-      <section class="cart-item" v-for="shoe in getCart">
+      <section class="cart-item" v-for="shoe in getCart" :key="shoe.id">
         <div class="cart-item__image">
           <img :src="shoe.image" alt="" />
         </div>
         <div class="cart-item__info">
-          <div>{{result.brand}}</div>
-          <div>Model</div>
-          <div>Size</div>
-          <div>Price</div>
+          <div>{{shoe.brand}}</div>
+          <div>{{shoe.model}}</div>
+          <div>{{shoe.size}}</div>
+          <div>{{shoe.price}}</div>
         </div>
         <div class="cart-item__remove">
-          <button>X</button>
+          <button @click="remove()">X</button>
         </div>
       </section>
     </section>
@@ -52,7 +48,19 @@
 import Header from "../components/Header.vue";
 
 export default {
+  data() {
+    return {
+      visible: false,
+      sum: 0,
+      cart: []
+    }
+  },
+
   computed: {
+    getShoe() {
+			return this.$store.getters.getShoe;
+		},
+
     getCart() {
       return this.$store.getters.getCart;
     }

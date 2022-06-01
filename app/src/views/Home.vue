@@ -36,8 +36,8 @@
     </section>
     <section class="frontpage__products">
       <div class="product" v-for="shoe in result">
-        <router-link :to="{name: 'product', params: {slug: shoe.slug}}">
-          <div class="product__image"><img :src="shoe.image" alt=""></div>
+        <router-link :to="{name: 'product', params: {slug: shoe.slug}}">    <!-- creating direct link from product container to product site through specified slug -->
+          <div class="product__image"><img :src="shoe.image" alt="image of shoe"></div>
           <section class="product__info">
             <span class="product__brand">{{shoe.brandName}}</span>
             <span class="product__model"> {{shoe.model}}</span>
@@ -73,11 +73,7 @@ export default {
     return {
       appName: import.meta.env.VITE_APP_NAME
     };
-  },
-
-  async created() {
-    await this.sanityFetch(query);
-  },
+  }
 
 };
 </script>

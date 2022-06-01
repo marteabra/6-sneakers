@@ -3,7 +3,8 @@
     <a href="/">
       <h1>'6'SNEAKERS</h1>
     </a>
-    <button class="cart__icon">
+    <router-link :to="`/cart`">
+      <button class="cart__icon" >
       <svg
         width="25"
         height="22"
@@ -17,6 +18,8 @@
         />
       </svg>
     </button>
+    </router-link>
+    
   </header>
 </template>
 

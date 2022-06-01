@@ -25,7 +25,7 @@
     <main class="product">
       <section class="product__container">
         <div class="product__image">
-          <img :src="result.image" alt="">
+          <img :src="result.image" alt="image of shoe">
         </div>
 
         <section class="product__container-desktop">
@@ -88,15 +88,7 @@ import query from "../groq/productPage.groq?raw";
 
 export default {
 
- /*  data() {
-    return {
-      shoe: {
-
-      }
-    }
-  }, */
-
-  mixins: [sanityMixin],
+  mixins: [sanityMixin],    //  getting sanity mixin to fetch query and params through methods
 
   async created() {
     await this.sanityFetch(query, params); 
@@ -110,7 +102,7 @@ export default {
 
   methods: {
     addToCart(products) {
-      this.$store.dispatch("updateProducts", products)
+      this.$store.dispatch("updateProducts", products)    //  updating cart when clicking button to add product in cart
     }
   },
 
@@ -261,10 +253,6 @@ footer {
   }
   .add-cart__mobile{
     display: none;
-  }
-
-  .product{
-
   }
 
   .product__container{
